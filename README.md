@@ -1,23 +1,46 @@
-# Microservices-p02
+# Shopping Cart Service
 
-## Setup
+This is a simple shopping cart service of an event-driven shopping cart application utilizing the Axon Framework and Axon Server for managing events and commands. This application follows the Command Query Responsibility Segregation (CQRS) and Event Sourcing patterns, allowing for a clean separation between read and write operations while persisting the state of the shopping cart through event storage.
+
+## Tech stack
+
+| **Technology** | **Description** |
+|----------------|-----------------|
+| Java | 11 |
+| Spring Boot | 2.6.7 |
+| Axon Framework | 4.5.12 |
+| Maven | 3.8.1 |
+| Docker | 20.10.8 |
+
+## Getting Started
+
+### Prerequisites
+
+- Java 11
+- Maven
+
+### Running the Application
+
+1. Clone the repository
+
+2. Navigate to the project directory
+
+3. Run Axon Server
 
   ```bash
-  sudo service docker start
   docker run -d --name axonserver -p 8024:8024 -p 8124:8124 axoniq/axonserver:4.5.12
   ```
-  
-## Running the application
+
+4. Build the project
+
+  ```bash
+  mvn clean install -DskipTests
+  ```
+
+5. Run the application
 
   ```bash
   mvn spring-boot:run
-  ```
-
-## Managing containers
-
-  ```bash
-  sudo docker stop $(docker ps -aq)
-  sudo docker rm $(docker ps -aq)
   ```
 
 ## API testing
@@ -93,3 +116,13 @@
   ```bash
   curl -X GET -H "Content-Type: application/json" http://localhost:8080/carts/9248d336-1ddf-458e-99da-df7ec0bb4a16/removed-items
   ```
+
+## Change Log
+
+| **Version** | **Description** |
+|-------------|-----------------|
+| 0.0.1       | Initial release |
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
